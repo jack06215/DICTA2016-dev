@@ -19,8 +19,8 @@ L = getLines(imgray,20);
 L = L(:,1:4)';
 L = [L(1,:); L(3,:); L(2,:); L(4,:)];
 
-imgray = im2double(imgray);
-[~, ~, ~, L] = ml_lineSelection(imgray, L);
+% imgray = im2double(imgray);
+% [~, ~, ~, L] = ml_lineSelection(imgray, L);
 
 
 % DEBUG OUTPUT - Gap filling

@@ -12,7 +12,7 @@ K = [477, 0,  0;
      0,  477,0;
      0,  0,  1];          % Intrinsic matrix
 % Compute frontal-parallel view homography
-H_form = computeFrontalH2(1,X3,center, K, im);
+H_form = computeFrontalH2(2,X,X3,center, K, im);
 H = H_form.T;
 %% Get 4 points from user
 im_warp = imwarp(im, H_form);
