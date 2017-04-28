@@ -1,7 +1,7 @@
 %% Construct homography matrix
-close all;
-planeID = 1;
-ax=X(planeID*2-1);ay=X(planeID*2);az=X3(planeID*3);
+%close all;
+planeID = 2;
+ax=X(planeID*3-2);ay=X(planeID*3-1);az=X3(planeID*3);
 
 %% Ortg 
 R1=makehgtform('xrotate',ax,'yrotate',ay);
@@ -13,7 +13,7 @@ C_center = [1,0, -center(1);
             0,1, -center(2);
             0,0,1];
 
-K1 = [4.771474878444084e+02,0,0;0,4.771474878444084e+02,0;0,0,1];
+K1 = [X(planeID*3),0,0;0,X(planeID*3),0;0,0,1];
 %K1 = diag([size(im,2), size(im,2),1]);
   
         

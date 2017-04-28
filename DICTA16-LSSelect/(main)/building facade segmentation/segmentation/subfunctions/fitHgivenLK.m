@@ -12,12 +12,13 @@ for index=1:n1
     Adj(index,index+n1)=1;
     Adj(index+n1,index)=1;
 end
-
+k0 = K(1);
 if nargin<5
-    x0=[0;0];
+    x0=[0;0;k0];
 end
 if nargin<4
     talk=1;
 end
+
 
 [H,x,fval]=rectifyOrthoR(L,K,Adj,x0,talk);

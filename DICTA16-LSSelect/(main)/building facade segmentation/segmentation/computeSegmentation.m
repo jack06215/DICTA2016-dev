@@ -42,8 +42,8 @@ if scaleimageflag == 1 && max([size(im,1),size(im,2)])>1000
     imscale=1000/max([size(im,1),size(im,2)]);
     im=imresize(im,imscale);
 end
-K = [4.771474878444084e+02,0,0;0,4.771474878444084e+02,0;0,0,1];
-%K = diag([size(im,2), size(im,2),1]);
+%K = [4.771474878444084e+02,0,0;0,4.771474878444084e+02,0;0,0,1];
+K = diag([size(im,2), size(im,2),1]);
 center = [size(im,2)/2;size(im,1)/2];
 [LS,Ladj,LS_c,L,hFig] = lineDetection(im,center,LSDscale,gapfillflag,extendflag,maxlines,athreshgap,dthreshgap,athreshadj,talk);
 

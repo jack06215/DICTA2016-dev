@@ -24,7 +24,7 @@ else
 end
 
 [x, fval] = fminunc(@simocost_HR,x0,options,orthoX,L,K,A);
-x = [orthoX; x];
+x = [orthoX(1:2); x];
 ax=x(1); ay=x(2); az=x(3);
 R=makehgtform('xrotate',ax,'yrotate',ay,'zrotate',az); R=R(1:3,1:3);
 

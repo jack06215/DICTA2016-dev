@@ -28,7 +28,7 @@ end
 ax=x(1);ay=x(2);
 %disp(['x-axis:', num2str(ax), ' y-axis:', num2str(ay), ' fval:', num2str(fval)]);
 R=makehgtform('xrotate',ax,'yrotate',ay); R=R(1:3,1:3);
-
+K = [x(3),0,0;0,x(3),0;0,0,1];
 H=inv(K*R'*inv(K));
 
 % if talk>0

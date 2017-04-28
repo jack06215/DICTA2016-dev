@@ -6,6 +6,7 @@ function [x,currinliers,x3]=nextRANSAChypo(L,remadj,alladj,K,highthresh,numPairs
 
 [H,currinliers,x]=ransacfitH(L,K,remadj,highthresh,numPairs,poptype,maxTrials,maxDataTrials,talk);
 xx = x;
+K = [xx(3),0,0;0,xx(3),0;0,0,1];
 
 % EM on inliers and homography
 [tempH,tempx]=rectifyOrthoR(L,K,currinliers,xx,0);

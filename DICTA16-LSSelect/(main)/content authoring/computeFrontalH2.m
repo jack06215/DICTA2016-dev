@@ -1,6 +1,6 @@
 function [ tformm ] = computeFrontalH2(planeID,X,X3,center,K,im)
 % planeID = 2;
-ax=X(planeID*2-1);ay=X(planeID*2);az=X3(planeID*3);
+ax=X(planeID*3-2);ay=X(planeID*3-1);az=X3(planeID*3);
 % ax=X(1);ay=X(2);az=0.6;
 % flag1 = ax >= 1 || ax <= -1;
 % flag2 = ay >= 1 || ay <= -1;
@@ -11,7 +11,9 @@ R1=R1(1:3,1:3);
 C_center = [1,0, -center(1);
             0,1, -center(2);
             0,0,1];
-H1= K*(R1/K)*C_center;
+        K1 = [X(planeID*3),0,0;0,X(planeID*3),0;0,0,1];
+
+H1= K1*(R1/K1)*C_center;
 s = norm(H1(:,2)) / norm(H1(:,1));
 %%
 % s = norm(H1(:,2)) / norm(H1(:,1));

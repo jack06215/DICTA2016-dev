@@ -38,11 +38,11 @@ LS_tmp2 = LS_tmp2(1:2,:);
 LSp_inlier = [LS_tmp1; LS_tmp2];
 
 
-hFig=[hFig az_fig];
-set(hFig(1,end),'Name','Inliers P');
-imagesc(im_new), axis equal;
-showLS(LSp_inlier, [0,1,0]);
-title(['Inlier P ', num2str(planeID)]);
+% hFig=[hFig az_fig];
+% set(hFig(1,end),'Name','Inliers P');
+% imagesc(im_new), axis equal;
+% showLS(LSp_inlier, [0,1,0]);
+% title(['Inlier P ', num2str(planeID)]);
 
 % Plot inliers result on the image
 hFig=[hFig az_fig];

@@ -8,11 +8,11 @@ im_obj_rect = [1,size(im_obj,2),size(im_obj,2),1;
 % Pre-defined image center and camera intrinsic matrix
 center = [size(im,2)/2; 
           size(im,1)/2];  % Image center
-K = [477, 0,  0;
-     0,  477,0;
-     0,  0,  1];          % Intrinsic matrix
+K1 = [X(planeID*3),0,0;0,X(planeID*3),0;0,0,1];
+
 % Compute frontal-parallel view homography
-H_form = computeFrontalH2(2,X,X3,center, K, im);
+planeID = 2;
+H_form = computeFrontalH2(planeID,X,X3,center, K, im);
 H = H_form.T;
 %% Get 4 points from user
 im_warp = imwarp(im, H_form);
