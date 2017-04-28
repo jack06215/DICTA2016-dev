@@ -26,11 +26,12 @@ end
 [x, fval] = fminunc(@orthocost_HR,x0,options,L,K,A);
 
 ax=x(1);ay=x(2);
+%disp(['x-axis:', num2str(ax), ' y-axis:', num2str(ay), ' fval:', num2str(fval)]);
 R=makehgtform('xrotate',ax,'yrotate',ay); R=R(1:3,1:3);
 
 H=inv(K*R'*inv(K));
 
-if talk>0
-    disp(['Cost before rectification: ',num2str(orthocost_HR(x0,L,K,A,0))])
-    disp(['Cost after rectification: ',num2str(orthocost_HR(x,L,K,A,0))])
-end
+% if talk>0
+%     disp(['Cost before rectification: ',num2str(orthocost_HR(x0,L,K,A,0))])
+%     disp(['Cost after rectification: ',num2str(orthocost_HR(x,L,K,A,0))])
+% end

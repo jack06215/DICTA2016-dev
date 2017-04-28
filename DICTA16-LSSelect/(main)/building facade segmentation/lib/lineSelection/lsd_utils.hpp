@@ -11,7 +11,7 @@ bool isEqual(const cv::Vec4i& _l1, const cv::Vec4i& _l2)
 
 	float product = (l1[2] - l1[0])*(l2[2] - l2[0]) + (l1[3] - l1[1])*(l2[3] - l2[1]);
 
-	if (fabs(product / (length1 * length2)) < cos(CV_PI / 90))
+	if (fabs(product / (length1 * length2)) < cos(CV_PI / 60))
 		return false;
 
 // 	float mx1 = (l1[0] + l1[2]) * 0.5f;

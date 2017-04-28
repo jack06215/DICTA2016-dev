@@ -42,27 +42,14 @@ if scaleimageflag == 1 && max([size(im,1),size(im,2)])>1000
     imscale=1000/max([size(im,1),size(im,2)]);
     im=imresize(im,imscale);
 end
-% K = [498.949848064801,0,0;0,498.949848064801,0;0,0,1];
-% K = diag([size(im,2), size(im,2), 1]);
 K = [4.771474878444084e+02,0,0;0,4.771474878444084e+02,0;0,0,1];
-% K = [791,0,0;0,791,0;0,0,1];
-% K = [1,0,0;0,1,0;0,0,1];
-center = [size(im,2)/2;size(im,1)/2]; % Landscape
-% center = [size(im,1)/2;size(im,2)/2];   % Protrait
+%K = diag([size(im,2), size(im,2),1]);
+center = [size(im,2)/2;size(im,1)/2];
 [LS,Ladj,LS_c,L,hFig] = lineDetection(im,center,LSDscale,gapfillflag,extendflag,maxlines,athreshgap,dthreshgap,athreshadj,talk);
 
 %% Form plane orientation hypotheses
 disp('into plane orientation');
 [X,inliers,numhyp,x3] = getPlaneOrientation(Ladj,L,K,highthresh,numPairs,maxTrials,maxDataTrials,poptype,talk);
-
-%% Find unique region labels
-disp('into getquads')
-% [Ladj,rectangles,inds,numRectangles,quads_c,qseg] = getRectangles(Ladj,LS_c,L,x3,inliers,numhyp,K,center);
-% Extract only a inliers pair (debug code)
-% test = find(qseg==2);
-% rectangles(:,test) = [];
-% qseg(test) = [];
-
 
 
 

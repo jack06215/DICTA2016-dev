@@ -180,11 +180,12 @@ function [M, inliers, xp] = ransac4(x,K,A,fittingfn,distfn,degenfn,s,t,poptype, 
                     % reset degenerate to true.
                     if fval>t
                         degenerate = 1;
-                        fprintf(1,'* degenerate solution (best score: %d)\n\n',bestscore);
+                        %fprintf(1,'* degenerate solution (best score: %d)\n\n',bestscore);
                     end;
                   end
 
                   % Safeguard against being stuck in this loop forever
+                  %disp(['count:',num2str(count)]);
                   count = count + 1;
                 end
 

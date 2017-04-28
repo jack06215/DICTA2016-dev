@@ -6,14 +6,6 @@ function [x,currinliers,x3]=nextRANSAChypo(L,remadj,alladj,K,highthresh,numPairs
 
 [H,currinliers,x]=ransacfitH(L,K,remadj,highthresh,numPairs,poptype,maxTrials,maxDataTrials,talk);
 xx = x;
-% [ar,ac] = find(currinliers>0);
-% tmp = [41,42,43,69,72,73];
-% index_tmp = sub2ind(size(currinliers),ar(tmp),ac(tmp));
-% currinliers(index_tmp) = 0;
-
-% currinliers = load('tmp_inliers.mat');
-% currinliers = currinliers.tmp_inliers;
-% mat2cell(currinliers,size(currinliers,1),size(currinliers,2));
 
 % EM on inliers and homography
 [tempH,tempx]=rectifyOrthoR(L,K,currinliers,xx,0);
@@ -21,7 +13,7 @@ xx = x;
 tempinliers=findHinliers(tempH,L,highthresh).*alladj;
 while sum(sum(tempinliers))>sum(sum(currinliers))
     if talk
-        fprintf(1,'inliers icrease from %d to %d\n',sum(sum(currinliers)),sum(sum(tempinliers)));
+        fprintf(1,'inliers increase from %d to %d\n',sum(sum(currinliers)),sum(sum(tempinliers)));
     end
     currinliers=tempinliers;
     x=tempx;
