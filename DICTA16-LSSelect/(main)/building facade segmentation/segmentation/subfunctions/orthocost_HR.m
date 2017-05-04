@@ -6,7 +6,6 @@ function c=orthocost_HR(x,L,K,A,talk)
 % make a unit norm normal vector
 % A is the (symmetric) adjacency matrix for planes
 % Talk tells the function to print out intermediate results
-
 if nargin<5
     talk=0;
 end
@@ -35,6 +34,7 @@ end
 %C = C-eye(size(C));
 C(A<1)=0;
 c = sum(sum(C));
+
 
 if (talk)
     disp('Grid Cost matrix')

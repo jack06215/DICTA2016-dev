@@ -49,7 +49,7 @@ center = [size(im,2)/2;size(im,1)/2];
 
 %% Form plane orientation hypotheses
 disp('into plane orientation');
-[X,inliers,numhyp,x3] = getPlaneOrientation(Ladj,L,K,highthresh,numPairs,maxTrials,maxDataTrials,poptype,talk);
+[X,inliers,numhyp,x3] = getPlaneOrientation(LS,Ladj,L,K,highthresh,numPairs,maxTrials,maxDataTrials,poptype,talk);
 
 
 

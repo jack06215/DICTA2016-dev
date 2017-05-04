@@ -1,4 +1,4 @@
-function [X,inliers,numhyp,X3] = getPlaneOrientation(Ladj,L,K,highthresh,numPairs,maxTrials,maxDataTrials,poptype,talk)
+function [X,inliers,numhyp,X3] = getPlaneOrientation(LS,Ladj,L,K,highthresh,numPairs,maxTrials,maxDataTrials,poptype,talk)
 %% GETPLANEORIENTATION 
 % inputs
 % Ladj: adjacency matrix for line segments
@@ -23,7 +23,7 @@ inliers=cell(0);    % set of extended line segments pairs that contribute to eac
 
 while 1
     % compute a "model" for the hypothesis plane in a given image
-    [x,currinliers,x3]=nextRANSAChypo(L,remadj,Ladj,K,highthresh,numPairs,maxTrials,maxDataTrials,poptype,talk);
+    [x,currinliers,x3]=nextRANSAChypo(LS,L,remadj,Ladj,K,highthresh,numPairs,maxTrials,maxDataTrials,poptype,talk);
     
     % update the model information
     inliers=[inliers,currinliers];      % plane inliers
