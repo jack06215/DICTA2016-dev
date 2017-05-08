@@ -20,6 +20,8 @@ inliers = C<=t;
 
 outliers = asin_costraint(LS,inliers);
 inliers = inliers - outliers;
+[id1, id2]=find(outliers>0);
+idxx=union(id1,id2);
 
 save outliers.mat;
 
@@ -30,13 +32,19 @@ function [outliers] = asin_costraint(LS,currinliers)
     [ind1,ind2]=find(currinliers>0);
     ind=union(ind1,ind2);
     %% Filtering
+    
     outliers_model = create_outliers_config(LS);
-    outliers_model.tau_threshold
+    %outliers_model.tau_threshold
+    
     index = find(outliers_model.LS_asin > outliers_model.tau_threshold);
+    
     
      outliers(index,:) = 1;   
      outliers(:,index) = 1;
+     
+     
     outliers= bitand(currinliers,outliers);
+    
     %save outliers_modelLS_asin.mat;
 end
 
@@ -55,5 +63,5 @@ function outliers_config = create_outliers_config(LS)
     LS_mu = mean(outliers_config.LS_asin);
     LS_sigma = std(outliers_config.LS_asin);
     % tau threshold for outliers
-    outliers_config.tau_threshold = max(sin(pi/60), min(LS_mu + 1.5 * LS_sigma, sin(pi/10)));
+    outliers_config.tau_threshold = max(sin(pi/60), min(LS_mu + 2.5 * LS_sigma, sin(pi/10)));
 end

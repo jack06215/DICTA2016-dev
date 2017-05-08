@@ -1,6 +1,6 @@
 %% Construct homography matrix
 %close all;
-planeID = 1;
+planeID = 2;
 ax=X(planeID*3-2);ay=X(planeID*3-1);az=X3(planeID*3);
 
 %% Ortg 
@@ -21,7 +21,7 @@ H1= K1*((R3 * R1)/K1)*C_center;
 %%
 s = norm(H1(:,2)) / norm(H1(:,1));
 % det > 0
-if (1)
+if (0)
     det = H1(1,1)*H1(2,2) - H1(2,1)*H1(1,2);
     if (det <= 0)
         error('det is out of range, program stop');

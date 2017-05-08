@@ -11,8 +11,14 @@ K = [xx(3),0,0;0,xx(3),0;0,0,1];
 % EM on inliers and homography
 [tempH,tempx]=rectifyOrthoR(L,K,currinliers,xx,0);
 [H3,x3] = rectifyInplaneR(L,K,currinliers,0,tempx,talk);
-% tempinliers=findHinliers(tempH,L,highthresh).*alladj;
-tempinliers=findHinliers2(LS,tempH,L,highthresh).*alladj;
+%tempinliers=findHinliers(tempH,L,highthresh).*alladj;
+  tempinliers=findHinliers2(LS,tempH,L,highthresh).*alladj;
+
+% [tempinliers, ~, idxx] = findHinliers2(LS,tempH,L,highthresh);
+% tempinliers(idxx,:) = 0;   
+% tempinliers(:,idxx) = 0;
+% tempinliers = tempinliers.*alladj;
+
 
 while sum(sum(tempinliers))>sum(sum(currinliers))
     if talk
@@ -25,7 +31,11 @@ while sum(sum(tempinliers))>sum(sum(currinliers))
     [tempH,tempx]=rectifyOrthoR(L,K,currinliers,xx,1);
     [H3,x3] = rectifyInplaneR(L,K,currinliers,x3(3),tempx,talk);
 %     tempinliers=findHinliers(tempH,L,highthresh).*alladj;
-    tempinliers=findHinliers2(LS,tempH,L,highthresh).*alladj;
+     tempinliers=findHinliers2(LS,tempH,L,highthresh).*alladj;
+%         [tempinliers, ~, idxx] = findHinliers2(LS,tempH,L,highthresh);
+%         tempinliers(idxx,:) = 0;   
+%         tempinliers(:,idxx) = 0;
+%         tempinliers = tempinliers.*alladj;
 
 end
 

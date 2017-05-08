@@ -50,9 +50,9 @@ end
 % Sort line segments by descending length
 L1=sortLS(L1);
 
-% % Extract 70% of LS by its length
-% maxlines=min([maxlines,floor(0.7*size(L1,2))]);
-% L1=L1(:,1:maxlines);
+% Extract 70% of LS by its length
+maxlines=min([maxlines,floor(0.7*size(L1,2))]);
+L1=L1(:,1:maxlines);
 
 % extend lines
 if extendflag

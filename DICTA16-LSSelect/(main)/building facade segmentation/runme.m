@@ -1,7 +1,7 @@
 %% Set up system environment
 addpath(genpath('.'));              % Adding all subfolders to path
 ccc;                                % Clear up everything
-impath = 'object0195.view02.png';       % Set the path of the image
+impath = 'Garfield_Building_Detroit.jpg';       % Set the path of the image
 talk = getParameter('talk');        % Flag for internediate output
 saveFig = getParameter('saveFig');  % Flag for saving figure
 if ~exist(impath,'file')            % check if the image file exists
@@ -10,7 +10,7 @@ end
 warning off all;                    % Turn off warnings
 %% Main algorithm pipeline starts from here
 tic;
-[im,K,center,LS,LS_c,X,Ladj,hFig,L,inliers,numhyp,X3] = computeSegmentation(impath,talk);
+[img,K,center,LS,LS_c,X,Ladj,hFig,L,inliers,numhyp,X3] = computeSegmentation(impath,talk);
 toc;
 %% Save figures screeshot
 if saveFig
